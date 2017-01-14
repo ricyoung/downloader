@@ -18,9 +18,10 @@ url =  Domainatrix.parse(book)
 puts "downloading - #{book}"
 full = url.path.to_s
 split = full.split('/')
-name = split[4]
+name = split[4].chomp
 puts "name is #{name}"
 download = open(i)
 IO.copy_stream(download,name)
+#just incase there are upper case letter
+Dir["**/*"].each {|r| File.rename(r, r.downcase)}
 }
-
